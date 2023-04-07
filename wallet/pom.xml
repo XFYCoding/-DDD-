@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.wallet</groupId>
+    <artifactId>wallet</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>wallet</name>
+    <description>wallet</description>
+    <modules>
+        <module>wallet-api</module>
+        <module>wallet-application</module>
+        <module>wallet-dal</module>
+        <module>wallet-domain</module>
+        <module>wallet-infra</module>
+        <module>wallet-gw</module>
+        <module>wallet-common</module>
+    </modules>
+
+    <properties>
+        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
+        <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <commons-collections.version>4.4</commons-collections.version>
+        <redisson-spring-boot-starter.version>3.11.2</redisson-spring-boot-starter.version>
+
+        <supply-project.version>0.0.1-SNAPSHOT</supply-project.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-api</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-application</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-dal</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-domain</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-infra</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-gw</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.wallet</groupId>
+                <artifactId>wallet-common</artifactId>
+                <version>${supply-project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.wallet</groupId>
+            <artifactId>wallet-common</artifactId>
+        </dependency>
+    </dependencies>
+</project>

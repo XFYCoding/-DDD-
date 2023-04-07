@@ -1,0 +1,20 @@
+spring:
+  data:
+    redis:
+      database: 7
+      host: 116.62.178.11
+      port: 6379
+      password: 1234qwer
+      #  spring-boot 1.0默认 jedis;  spring-boot2.0 默认lettuce ，lettuce线程安全
+      lettuce:
+        pool:
+          # 连接池中的最大空闲连接 默认8
+          max-idle: 8
+          # 连接池中的最小空闲连接 默认0
+          min-idle: 500
+          # 连接池最大连接数 默认8 ，负数表示没有限制
+          max-active: 2000
+          # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认-1
+          max-wait: -1
+      cache:
+        type: redis
