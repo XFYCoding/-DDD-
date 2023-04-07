@@ -18,7 +18,7 @@ public class Wallet extends BaseEntity<String> implements Aggregate<String, Wall
     private BigDecimal balance;
 
     /**
-     * 账单
+     * 账单（懒加载）
      */
     private final Lazy<List<WalletDetail>> walletDetails;
 
@@ -51,13 +51,22 @@ public class Wallet extends BaseEntity<String> implements Aggregate<String, Wall
         return walletDetails.get();
     }
 
-    public void fee(BigDecimal balance) {
+    public void fee(BigDecimal balance, String orderId) {
         this.balance = this.balance.subtract(balance);
+        fillDetail(balance, orderId,WalletType.Fee);
         this.onUpdate(this.id);
     }
 
-    public void refund(BigDecimal balance) {
+    public void refund(BigDecimal balance, String orderId) {
         this.balance = this.balance.add(balance);
+        fillDetail(balance, orderId,WalletType.ReFund);
         this.onUpdate(this.id);
     }
+
+    private void fillDetail(BigDecimal balance, String orderId,WalletType walletType) {
+        List<WalletDetail> walletDetails = getWalletDetails();
+        //这里的id自增可以用雪花算法，数据库自定义，数据库自增来实现,redis自增
+        walletDetails.add(new WalletDetail(null,id,id, orderId, walletType, balance));
+    }
+
 }

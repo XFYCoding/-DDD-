@@ -66,23 +66,9 @@ public class WalletRepoImpl implements WalletRepo {
 
         WalletDetailPo.SaveOperation walletDetailPoSaveOperation = new WalletDetailPo.SaveOperation();
         fillSaveOperation(walletDetailPoSaveOperation, wallet.getWalletDetails(), this::convert2WalletDetailPo);
-
-        RLock lock = redissonClient.getLock("WALLET" + wallet.getId());
-        try {
-            //加锁
-            boolean res = lock.tryLock(1, 10, TimeUnit.SECONDS);
-            if (!res) {
-                throw new MyException("重复提交");
-            }
-            //插入数据库
-            handle(walletPoSaveOperation, walletMapper);
-            handle(walletDetailPoSaveOperation, walletDetailMapper);
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            lock.unlock();
-        }
-
+        //插入数据库
+        handle(walletPoSaveOperation, walletMapper);
+        handle(walletDetailPoSaveOperation, walletDetailMapper);
     }
 
 
